@@ -23,16 +23,16 @@ const getPort = (input, list) => {
 	return parseInt(port[cols[1]], 10);
 };
 
-const getList = () => getListFn()
-	.then(list => list
-		.split('\n')
-		.reduce((result, x) => {
-			if (isProtocol(x)) {
-				result.push(x.match(/\S+/g) || []);
-			}
+const getList = () => getListFn().then(list => list
+	.split('\n')
+	.reduce((result, x) => {
+		if (isProtocol(x)) {
+			result.push(x.match(/\S+/g) || []);
+		}
 
-			return result;
-		}, []));
+		return result;
+	}, [])
+);
 
 module.exports = input => {
 	if (typeof input !== 'number') {
